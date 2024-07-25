@@ -1,0 +1,24 @@
+INSERT INTO courses (code, course_name) VALUES ('CS-E4710','Machine Learning: Supervised Methods');
+INSERT INTO courses (code, course_name) VALUES ('CS-E5710','Bayesian Data Analysis');
+INSERT INTO courses (code, course_name) VALUES ('CS-E4650','Methods of Data Mining');
+INSERT INTO courses (code, course_name) VALUES ('CS-E4800','Artificial Intelligence');
+INSERT INTO courses (code, course_name) VALUES ('CS-E4890','Deep Learning');
+INSERT INTO courses (code, course_name) VALUES ('CS-E4875','Research Project in Machine Learning, Data Science and Artificial Intelligence');
+INSERT INTO courses (code, course_name) VALUES ('CS-E5795','Computational Methods in Stochastics');
+INSERT INTO courses (code, course_name) VALUES ('CS-E4820','Machine Learning: Advanced Probabilistic Methods');
+INSERT INTO courses (code, course_name) VALUES ('CS-E4740','Federated Learning');
+INSERT INTO courses (code, course_name) VALUES ('CS-E4830','Kernel Methods in Machine Learning');
+INSERT INTO courses (code, course_name) VALUES ('CS-E4895','Gaussian Processes');
+INSERT INTO courses (code, course_name) VALUES ('CS-E4450','Explorative Information Visualization');
+INSERT INTO courses (code, course_name) VALUES ('CS-E4850','Computer Vision');
+INSERT INTO courses (code, course_name) VALUES ('CS-E4680','Quantum Machine Learning');
+INSERT INTO courses (code, course_name) VALUES ('ELEC-E8125','Reinforcement Learning');
+INSERT INTO courses (code, course_name) VALUES ('CS-E4000','Seminar in Computer Science');
+INSERT INTO courses (code, course_name) VALUES ('CS-E4004','Individual Studies in Computer Science');
+INSERT INTO courses (code, course_name) VALUES ('CS-E4770','Designing and Building Scalable Web Applications');
+INSERT INTO courses (code, course_name) VALUES ('CS-E4270','Device-Agnostic Design');
+INSERT INTO courses (code, course_name) VALUES ('CS-E4675','Full-stack Web Development');
+INSERT INTO courses (code, course_name) VALUES ('CS-E5220','User Interface Construction');
+INSERT INTO courses (code, course_name) VALUES ('CS-E4003','Special Assignment in Computer Science');
+INSERT INTO courses (code, course_name) VALUES ('CS-E5740','Complex Networks');
+
