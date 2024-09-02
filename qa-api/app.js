@@ -1,5 +1,8 @@
 import { serve } from "./deps.js";
+import { cacheMethodCalls } from "./util/cacheUtil.js";
 import * as qaController from "./controllers/qaController.js";
+
+const cachedQaController = cacheMethodCalls(qaController, ["postQuestion", "upvoteQuestion", "postAnswer", "upvoteAnswer"]);
 
 const sockets = new Set();
 
@@ -21,9 +24,6 @@ const handleOpenSocket = async (request, mappingResult) => {
   socket.onclose = () => {
     sockets.delete(socket);
   };
-
-
-
   return response;
 };
 
@@ -32,54 +32,57 @@ const handleRoot = async (request, mappingResult) => {
 };
 
 const handleGetCourses = async (request, mappingResult) => {
-  const result = await qaController.getCourses(request, mappingResult);
+  const result = await cachedQaController.getCourses(request, mappingResult);
   return new Response(JSON.stringify(result));
 };
 
 const handleGetCourse = async (request, mappingResult) => {
-  console.log("getting course");
-  const result = await qaController.getCourse(request, mappingResult);
-  console.log(result);
+  const result = await cachedQaController.getCourse(request, mappingResult);
   return new Response(JSON.stringify(result));
 };
 
 
 const handleGetQuestions = async (request, mappingResult) => {
-  const result = await qaController.getQuestions(request, mappingResult);
+  const result = await cachedQaController.getQuestions(request, mappingResult);
   return new Response(JSON.stringify(result));
 };
 
 const handleGetQuestion = async (request, mappingResult) => {
-  const result = await qaController.getQuestion(request, mappingResult);
+  const result = await cachedQaController.getQuestion(request, mappingResult);
   return new Response(JSON.stringify(result));
 };
 
 const handlePostQuestion = async (request, mappingResult) => {
-  const new_question = await qaController.postQuestion(request, mappingResult);
-  await sendSocketMessage(new_question);
+  const new_question = await cachedQaController.postQuestion(request, mappingResult, sockets);
+  if (new_question !== "wait") {
+    await sendSocketMessage(new_question);
+  }
   return new Response(JSON.stringify(new_question));
 };
 
 const handleUpvoteQuestion = async (request, mappingResult) => {
-  await qaController.upvoteQuestion(request, mappingResult);
-  return new Response(JSON.stringify("OK"));
+  const result = await cachedQaController.upvoteQuestion(request, mappingResult);
+  return new Response(JSON.stringify(result));
 };
 
 
 const handleGetAnswers = async (request, mappingResult) => {
-  const result = await qaController.getAnswers(request, mappingResult);
+  console.log("result");
+  const result = await cachedQaController.getAnswers(request, mappingResult);
   return new Response(JSON.stringify(result));
 };
 
 const handlePostAnswer = async (request, mappingResult) => {
-  const new_answer = await qaController.postAnswer(request, mappingResult);
-  await sendSocketMessage(new_answer);
+  const new_answer = await cachedQaController.postAnswer(request, mappingResult);
+  if (new_answer !== "wait") {
+    await sendSocketMessage(new_answer);
+  }
   return new Response(JSON.stringify(new_answer));
 };
 
 const handleUpvoteAnswer = async (request, mappingResult) => {
-  await qaController.upvoteAnswer(request, mappingResult);
-  return new Response(JSON.stringify("OK"));
+  const result = await cachedQaController.upvoteAnswer(request, mappingResult);
+  return new Response(JSON.stringify(result));
 };
 
 

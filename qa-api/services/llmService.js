@@ -1,7 +1,7 @@
-const llm = async (request) => {
-    const data = await request.json();
+const llm = async (prompt) => {
 
-    const response = await fetch("http://llm-api:7000/", {
+    const data = { "question": prompt }
+    const response = await fetch(`http://llm-api:7000`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

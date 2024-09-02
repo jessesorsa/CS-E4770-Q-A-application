@@ -1,3 +1,6 @@
-from transformers import pipeline
+from transformers import pipeline, set_seed
 
-generator = pipeline('text-generation', model="facebook/opt-125m", do_sample=True)
+set_seed(32)
+
+generator = pipeline(
+    'text-generation', model="facebook/opt-125m", do_sample=True)

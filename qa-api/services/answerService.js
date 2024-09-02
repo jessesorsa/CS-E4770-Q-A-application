@@ -1,11 +1,11 @@
 import { sql } from "../database/database.js";
 
-const fetchAllAnswers = async (id) => {
-  return await sql`SELECT * FROM answers WHERE question_id = ${id};`;
-};
-
-const fetchAnswer = async (user_uuid, post_time) => {
-  return await sql`SELECT * FROM answers WHERE user_uuid = ${user_uuid} AND post_time = ${post_time};`;
+const fetchAllAnswers = async (id, offset) => {
+  return await sql`
+    SELECT * FROM answers
+    WHERE question_id = ${id}
+    ORDER BY upvote_time DESC
+    LIMIT 20 OFFSET ${offset};`;
 };
 
 const upvoteAnswer = async (id) => {
@@ -13,6 +13,15 @@ const upvoteAnswer = async (id) => {
   upvotes = upvotes + 1, 
   upvote_time = CURRENT_TIMESTAMP
   WHERE id = ${id};`;
+};
+
+const upvoteAnswerUserUuid = async (answer_id, user_uuid) => {
+  await sql`INSERT INTO answer_likes (answer_id, user_uuid) VALUES (${answer_id}, ${user_uuid});`;
+};
+
+const fetchUpvoteAnswerUserUuid = async (answer_id, user_uuid) => {
+  return await sql`SELECT * FROM answer_likes 
+  WHERE answer_id = ${answer_id} AND user_uuid = ${user_uuid};`;
 };
 
 const postAnswer = async (question_id, user_uuid, answer, ai_generated) => {
@@ -23,4 +32,7 @@ const postAnswer = async (question_id, user_uuid, answer, ai_generated) => {
   return result[0];
 };
 
-export { fetchAllAnswers, fetchAnswer, upvoteAnswer, postAnswer }
+export {
+  fetchAllAnswers, upvoteAnswer, postAnswer,
+  upvoteAnswerUserUuid, fetchUpvoteAnswerUserUuid
+}

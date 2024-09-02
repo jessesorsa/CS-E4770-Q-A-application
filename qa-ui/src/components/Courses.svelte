@@ -12,13 +12,16 @@
     onMount(async () => {
         await courseService.getCourses();
         loading = false;
+
+        document.body.classList.add("ready-for-testing");
+        console.log("Added ready-for-testing class");
     });
 </script>
 
 <div class="card flex mx-20 my-5 justify-center bg-base-200">
     <div class="card-body">
         <h2 class="card-title">Welcome to QA!</h2>
-        <p>Choose a course below to ask questions</p>
+        <p>Choose a course below to ask questions.</p>
     </div>
 </div>
 <div class="card flex mx-20 my-5 bg-base-200">

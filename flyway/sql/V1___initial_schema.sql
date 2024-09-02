@@ -1,4 +1,3 @@
-
 CREATE TABLE courses (
   id SERIAL PRIMARY KEY,
   code TEXT NOT NULL,

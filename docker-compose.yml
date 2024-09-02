@@ -14,7 +14,14 @@ services:
     ports:
       - 7800:7800
 
- 
+  redis:
+    image: redis:latest
+    command: redis-server /usr/local/etc/redis/redis.conf
+    volumes:
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+    expose:
+      - 6379
+
   qa-api:
     build: qa-api
     image: qa-api
@@ -48,6 +55,8 @@ services:
     restart: "no"
     expose:
       - 7000
+    deploy:
+      replicas: 3
 
   database:
     container_name: database-server-dab-p2-1dbad1fe-578d-4136-89a0-17c13ce21206

@@ -33,9 +33,15 @@ const questionsStore = () => {
     set: (value) => {
       questions.set(value);
     },
-    add: (value) => {
+    add_question: (value) => {
       questions.update(currentQuestions => {
         const newQuestions = [value, ...currentQuestions];
+        return newQuestions;
+      });
+    },
+    add: (value) => {
+      questions.update(currentQuestions => {
+        const newQuestions = [...currentQuestions, ...value];
         return newQuestions;
       });
     },
@@ -72,9 +78,15 @@ const answersStore = () => {
     set: (value) => {
       answers.set(value);
     },
-    add: (value) => {
+    add_answer: (value) => {
       answers.update(currentAnswers => {
         const newAnswers = [value, ...currentAnswers];
+        return newAnswers;
+      });
+    },
+    add: (value) => {
+      answers.update(currentAnswers => {
+        const newAnswers = [...currentAnswers, ...value];
         return newAnswers;
       });
     },

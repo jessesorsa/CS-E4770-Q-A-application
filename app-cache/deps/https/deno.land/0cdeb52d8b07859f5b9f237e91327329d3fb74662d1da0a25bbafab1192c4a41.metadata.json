@@ -1,0 +1,23 @@
+{
+  "headers": {
+    "x-deno-warning": "Implicitly using latest version (v0.32.4) for https://deno.land/x/redis/mod.ts",
+    "via": "http/2 edgeproxy-h",
+    "cross-origin-resource-policy": "same-origin",
+    "cross-origin-embedder-policy": "same-origin",
+    "server": "deno/gcp-europe-west3",
+    "x-frame-options": "DENY",
+    "access-control-allow-origin": "*",
+    "vary": "accept",
+    "x-content-type-options": "nosniff",
+    "date": "Tue, 27 Aug 2024 21:09:57 GMT",
+    "location": "/x/redis@v0.32.4/mod.ts",
+    "cross-origin-opener-policy": "same-origin",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "strict-transport-security": "max-age=63072000; includeSubDomains; preload"
+  },
+  "url": "https://deno.land/x/redis/mod.ts",
+  "now": {
+    "secs_since_epoch": 1724792998,
+    "nanos_since_epoch": 481227356
+  }
+}

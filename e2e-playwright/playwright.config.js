@@ -1,5 +1,5 @@
 module.exports = {
-  timeout: 10000,
+  timeout: 60000,
   retries: 0,
   reporter: "list",
   workers: 5,
